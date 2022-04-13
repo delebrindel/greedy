@@ -1,0 +1,50 @@
+@use "../scss/mixins" as mxn;
+$control-bar-height: 40%;
+$wrapper-margin: 12px;
+
+.wrapper {
+  margin: 2vh auto 0;
+  height: 20vh;
+  width: 90vw;
+
+  display: flex;
+  background: #eee;
+
+  flex-direction: column;
+  gap: $wrapper-margin;
+
+  .controlBar {
+    display: flex;
+    flex-direction: row;
+    height: $control-bar-height;
+    gap: $wrapper-margin;
+    margin: $wrapper-margin;
+
+    .controlItem {
+      width: auto;
+      background: #ccc;
+      cursor: pointer;
+      @include mxn.fit-to-size;
+      @include mxn.center-flex;
+      font-weight: bold;
+      font-size: 32px;
+    }
+  }
+
+  .enteredInputs{
+    display: flex;
+    justify-content: center;
+    font-size: 32px;
+
+    .inputItem{
+      width: 20%;
+      @include mxn.center-flex;
+      transition: color 500ms ease-in;
+
+      &.active{
+        color: darkred;
+        font-weight: bold;
+      }
+    }
+  }
+}

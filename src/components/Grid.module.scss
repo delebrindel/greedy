@@ -1,0 +1,35 @@
+@use "../scss/mixins" as mxn;
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    box-sizing: border-box;
+    background: #111;
+    border: 2px solid #111;
+
+    .row {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        gap: 2px;
+        height: 100%;
+
+        .innerCell {
+            @include mxn.fit-to-size;
+            @include mxn.center-flex;
+            background: #eee;
+            transition: background 500ms ease-in;
+
+            font-size: 32px;
+            font-weight: bold;
+
+            &.active {
+                background: red;
+            }
+        }
+    }
+    height: 75vh;
+    width: 90vw;
+    margin: 1em auto;
+}
