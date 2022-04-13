@@ -1,4 +1,6 @@
+@use "../scss/palette" as pal;
 @use "../scss/mixins" as mxn;
+
 $control-bar-height: 40%;
 $wrapper-margin: 12px;
 
@@ -42,7 +44,7 @@ $wrapper-margin: 12px;
       transition: color 500ms ease-in;
 
       &.active{
-        color: darkred;
+        color: pal.$color-active;
         font-weight: bold;
       }
     }

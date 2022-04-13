@@ -1,4 +1,5 @@
 @use "../scss/mixins" as mxn;
+@use "../scss/palette" as pal;
 
 .wrapper {
     display: flex;
@@ -18,14 +19,15 @@
         .innerCell {
             @include mxn.fit-to-size;
             @include mxn.center-flex;
-            background: #eee;
+            background: pal.$color-white;
             transition: background 500ms ease-in;
 
             font-size: 32px;
             font-weight: bold;
 
             &.active {
-                background: red;
+                background: pal.$color-active;
+                color: pal.$color-white;
             }
         }
     }

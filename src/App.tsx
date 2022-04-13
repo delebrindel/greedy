@@ -1,4 +1,3 @@
-import "./App.css";
 import { useState } from "react";
 import { Controls } from "./components/Controls";
 import { Grid } from "./components/Grid";
@@ -30,7 +29,7 @@ function App() {
     setFinished(true);
     setTimeout(() => {
       setFinished(false);
-    }, 1000);
+    }, GRID_CONFIG.TIMEOUT);
   };
 
   const moveItems = (commands: DirectionItem[]): Promise<Position> => {
@@ -47,11 +46,11 @@ function App() {
             count === commands.length - 1 &&
               setTimeout(() => {
                 resolve(newPosition);
-              }, 500);
+              }, GRID_CONFIG.TIMEOUT);
             return newPosition;
           });
           setActiveStep(count);
-        }, count * 500);
+        }, count * GRID_CONFIG.TIMEOUT + 500);
       });
     });
   };
