@@ -1,5 +1,5 @@
 export const GRID_CONFIG = {
-  ROWS: 4,
-  COLUMNS: 4,
+  ROWS: 6,
+  COLUMNS: 6,
   TIMEOUT: 500,
 }
