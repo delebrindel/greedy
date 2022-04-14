@@ -1,5 +1,4 @@
 import { Howl } from 'howler';
-import { FC } from 'react';
 
 type UseSoundParams = {
   route: string;

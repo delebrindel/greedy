@@ -1,13 +1,11 @@
-import { FC } from "react";
-import { useState } from "react";
+import { FC, useState } from "react";
+import { GRID_CONFIG } from "../enums/Config";
+import { DirectionItem, Position } from "../enums/Directions";
+import { useGrid } from "../hooks/use-grid";
+import { useSound } from "../hooks/use-sound";
 import { Controls } from "./Controls";
 import { Grid } from "./Grid";
-import { DirectionItem, Position } from "../enums/Directions";
-import { GRID_CONFIG } from "../enums/Config";
-import { useGrid } from "../hooks/use-grid";
 
-import { Howl, Howler } from 'howler';
-import { useSound } from "../hooks/use-sound";
 
 
 const INITIAL_POSITION = {
@@ -29,8 +27,8 @@ export const GridGame: FC<GridGameProps> = ({ rows, columns, exit }) => {
   const [activeStep, setActiveStep] = useState(INITIAL_STEP);
   const [finished, setFinished] = useState(false);
 
-  const playClick = useSound({route: '/sounds/click.wav'});
-  const playFail = useSound({route: '/sounds/fail.mp3'});
+  const playClick = useSound({route: 'sounds/click.wav'});
+  const playFail = useSound({route: 'sounds/fail.mp3'});
 
   const { moveOnGrid, checkIfWin } = useGrid({
     rows,
@@ -68,6 +66,7 @@ export const GridGame: FC<GridGameProps> = ({ rows, columns, exit }) => {
     await moveItems(commands).then((lastPosition: Position) => {
       if (checkIfWin(lastPosition, exit)) {
         alert("CONGRATS YOU WIN");
+        playClick();
       } else {
         resetState();
         playFail();
