@@ -7,6 +7,7 @@ import { GRID_CONFIG } from "../enums/Config";
 import { useGrid } from "../hooks/use-grid";
 
 import { Howl, Howler } from 'howler';
+import { useSound } from "../hooks/use-sound";
 
 
 const INITIAL_POSITION = {
@@ -28,10 +29,8 @@ export const GridGame: FC<GridGameProps> = ({ rows, columns, exit }) => {
   const [activeStep, setActiveStep] = useState(INITIAL_STEP);
   const [finished, setFinished] = useState(false);
 
-  
-  const clickSound = new Howl({
-    src: ["sounds/click.wav"]
-  })
+  const playClick = useSound({route: '/sounds/click.wav'});
+  const playFail = useSound({route: '/sounds/fail.mp3'});
 
   const { moveOnGrid, checkIfWin } = useGrid({
     rows,
@@ -71,7 +70,7 @@ export const GridGame: FC<GridGameProps> = ({ rows, columns, exit }) => {
         alert("CONGRATS YOU WIN");
       } else {
         resetState();
-        clickSound.play();
+        playFail();
       }
     });
   };
